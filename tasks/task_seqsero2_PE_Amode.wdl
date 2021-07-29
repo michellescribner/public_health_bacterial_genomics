@@ -16,7 +16,7 @@ task seqsero2_PE_one_sample {
     # Print and save version
     SeqSero2_package.py --version > VERSION && sed -i -e 's/^/SeqSero2_package.py /' VERSION
     # Run Kleborate on the input assembly with the --all flag and output with samplename prefix
-    SeqSero2_package.py -p 8 -t -m a 2 -n ~{samplename} -d ~{samplename}_seqseqro2_output_dir -i ~{reads_1} ~{reads_2}
+    SeqSero2_package.py -p 8 -t 2 -m a -n ~{samplename} -d ~{samplename}_seqseqro2_output_dir -i ~{reads_1} ~{reads_2}
     # Run a python block to parse output file for terra data tables
     python3 <<CODE
     import csv
