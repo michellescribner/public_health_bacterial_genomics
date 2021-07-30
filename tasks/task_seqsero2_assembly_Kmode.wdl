@@ -1,6 +1,6 @@
 version 1.0
 
-task seqsero2_PE_one_sample {
+task seqsero2_assembly_one_sample {
   # Inputs
   input {
     File assembly
