@@ -63,7 +63,7 @@ task seqsero2_PE_Kmode_one_sample {
     String version = read_string("VERSION")
     String pipeline_date = read_string("DATE")
     String predicted_identification = read_string("PREDICTED_IDENTIFICATION")
-    String predicted_antigentic_profile = read_string("PREDICTED_ANTIGENIC_PROFILE")
+    String predicted_antigenic_profile = read_string("PREDICTED_ANTIGENIC_PROFILE")
     String predicted_serotype = read_string("PREDICTED_SEROTYPE")
     String o_antigen_prediction = read_string("O_ANTIGEN_PREDICTION")
     String h1_antigen_prediction = read_string("H1_ANTIGEN_PREDICTION")
