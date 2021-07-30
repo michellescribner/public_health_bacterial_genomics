@@ -58,7 +58,7 @@ task seqsero2_PE_one_sample {
     CODE
   >>>
   output {
-    File kleborate_output_file = "./~{samplename}_seqseqro2_output_dir/SeqSero_result.tsv"
+    File seqsero2_output_file = "./~{samplename}_seqseqro2_output_dir/SeqSero_result.tsv"
     String version = read_string("VERSION")
     String pipeline_date = read_string("DATE")
     String predicted_identification = read_string("PREDICTED_IDENTIFICATION")
