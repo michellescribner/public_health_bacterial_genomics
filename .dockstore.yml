@@ -20,3 +20,8 @@ workflows:
    primaryDescriptorPath: /workflows/wf_serotypefinder.wdl
    testParameterFiles:
     - empty.json
+ - name: SeqSero2_FASTA
+   subclass: WDL
+   primaryDescriptorPath: /workflows/wf_seqsero2_assembly_Kmode.wdl
+   testParameterFiles:
+    - empty.json
