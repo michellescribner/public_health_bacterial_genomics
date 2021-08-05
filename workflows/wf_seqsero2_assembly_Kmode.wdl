@@ -6,7 +6,7 @@ import "../tasks/task_versioning.wdl" as versioning
 
 workflow seqsero2_assembly_wf {
   input {
-      File assembly
+      File salmonella_assembly
       String samplename
     }
   call taxon.seqsero2_assembly_one_sample {
