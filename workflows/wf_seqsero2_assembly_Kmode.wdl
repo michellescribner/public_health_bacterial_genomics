@@ -11,7 +11,7 @@ workflow seqsero2_assembly_wf {
     }
   call taxon.seqsero2_assembly_one_sample {
     input:
-      assembly = assembly,
+      assembly = salmonella_assembly,
       samplename = samplename
     }
   call versioning.version_capture{
