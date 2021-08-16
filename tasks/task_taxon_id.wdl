@@ -45,7 +45,7 @@ task gambit {
     File gambit_report = "~{samplename}_gambit.csv"
     String gambit_docker = docker
     String pipeline_date = read_string("DATE")
-    Float gambit_score = read_float("GAMBIT_SCORE") 
+    Float gambit_score = read_float("GAMBIT_SCORE")
     Float gambit_delta = read_float("GAMBIT_DELTA")
     String gambit_genus = read_string("PREDICTED_GENUS")
     String gambit_species = read_string("PREDICTED_SPECIES")
@@ -66,7 +66,6 @@ task kleborate_one_sample {
     String kleborate_docker_image = "staphb/kleborate:2.0.4"
   }
   command <<<
-    # capture date and version
     # Print and save date
     date | tee DATE
     # Print and save version
@@ -158,25 +157,25 @@ task serotypefinder_one_sample {
     # capture date and version
     date | tee DATE
 
-    serotypefinder.py -i ~{ecoli_assembly}  -x -o . 
+    serotypefinder.py -i ~{ecoli_assembly}  -x -o .
     mv results_tab.tsv ~{samplename}_results_tab.tsv
-    
+
     # set H and O type based on serotypefinder ourputs
     python3 <<CODE
     import csv
     import re
-    
+
     antigens = []
     h_re = re.compile("H[0-9]*")
     o_re = re.compile("O[0-9]*")
-    
+
     with open("~{samplename}_results_tab.tsv",'r') as tsv_file:
       tsv_reader = csv.DictReader(tsv_file, delimiter="\t")
       for row in tsv_reader:
           if row.get('Serotype') not in antigens:
-            antigens.append(row.get('Serotype'))            
+            antigens.append(row.get('Serotype'))
     print("Antigens: " + str(antigens))
-    
+
     h_type = "/".join(set("/".join(list(filter(h_re.match, antigens))).split('/')))
     print("H-type: " + h_type)
     o_type = "/".join(set("/".join(list(filter(o_re.match,antigens))).split('/')))
@@ -186,7 +185,7 @@ task serotypefinder_one_sample {
     if serotype == ":":
       serotype = "NA"
     print("Serotype: " + serotype)
-    
+
     with open ("STF_SEROTYPE", 'wt') as stf_serotype:
       stf_serotype.write(str(serotype))
     CODE
