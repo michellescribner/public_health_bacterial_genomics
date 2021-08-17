@@ -29,9 +29,9 @@ workflows:
   subclass: WDL
   primaryDescriptorPath: /workflows/wf_seqsero2_PE_Amode.wdl
   testParameterFiles:
-   - empty.json
- - name: SeqSero2_PE_Kmers
-   subclass: WDL
-   primaryDescriptorPath: /workflows/wf_seqsero2_PE_Kmode.wdl
-   testParameterFiles:
+    - empty.json
+- name: SeqSero2_PE_Kmers
+  subclass: WDL
+  primaryDescriptorPath: /workflows/wf_seqsero2_PE_Kmode.wdl
+  testParameterFiles:
     - empty.json
