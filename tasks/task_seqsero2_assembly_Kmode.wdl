@@ -28,7 +28,7 @@ task seqsero2_assembly_one_sample {
         Predicted_ID.write(pred_id)
       with open ("PREDICTED_ANTIGENIC_PROFILE", 'wt') as Predicted_Antigen_Prof:
         pred_ant_prof=tsv_dict['Predicted antigenic profile']
-        Predicted_Antigen_Prof.write(pred_antigen_prof)
+        Predicted_Antigen_Prof.write(pred_ant_prof)
       with open ("PREDICTED_SEROTYPE", 'wt') as Predicted_Sero:
         pred_sero=tsv_dict['Predicted serotype']
         Predicted_Sero.write(pred_sero)
