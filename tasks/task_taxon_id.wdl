@@ -41,10 +41,17 @@ task gambit {
           predicted_taxon=line["predicted.name"]
           if not predicted_taxon:
             predicted_taxon="None"
-          gambit_taxon.write(predicted_taxon)
+           # changing the language here to indicate the discrepancy between a nearest taxon and the actual prediction/assignment made when gambit distance thresholds are crossed
+          gambit_taxon_assignment.write(predicted_taxon)
+        # An added column in the gambit report that will list the nearest taxon; in instances where the distance passes the taxon threshold, this value will be the same as predicted.name. Instance, however, where the taxon threshold is not met, this will be valueble for PHL users  
+        with open("GAMBIT_NEAREST", 'wt') as gambit_taxon:
+          gambit_nearest_taxon=line["nearest.name"]
+          gambit_taxon.write(nearest_taxon)
     CODE
   >>>
   output {
+    # output file showing a list of the most specific taxons in order of distance. This, again, is useful in instances where no predicted.name value exists: The added column above will give a brief overview of what the next specific taxon might be, but then this file will provide even more information that will enable a lab to further troubleshoot
+    File gambit_nearest_taxons = "~{samplename}_gambit_nearest_taxons.csv"
     File gambit_report = "~{samplename}_gambit.csv"
     String gambit_docker = docker
     String pipeline_date = read_string("DATE")
