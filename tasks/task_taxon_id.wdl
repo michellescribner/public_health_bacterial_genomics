@@ -51,7 +51,7 @@ task gambit {
   >>>
   output {
     # output file showing a list of the most specific taxons in order of distance. This, again, is useful in instances where no predicted.name value exists: The added column above will give a brief overview of what the next specific taxon might be, but then this file will provide even more information that will enable a lab to further troubleshoot
-    File gambit_nearest_taxons = "~{samplename}_gambit_nearest_taxons.csv"
+    File gambit_nearest_genomes = "~{samplename}_gambit_nearest_genomes.csv"
     File gambit_report = "~{samplename}_gambit.csv"
     String gambit_docker = docker
     String pipeline_date = read_string("DATE")
